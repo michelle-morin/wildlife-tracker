@@ -6,6 +6,21 @@ namespace Wildlife
 {
   public class Program
   {
+    public static void ReturnToMenu()
+    {
+      Console.WriteLine("Would you like to return to the main menu? (Y/N)");
+      string searchAgain = Console.ReadLine();
+      string searchAgainLower = searchAgain.ToLower();
+      if (searchAgainLower == "y")
+      {
+        Main();
+      }
+      else
+      {
+        Console.WriteLine("OK, have a nice day!");
+      }
+    }
+
     public static void AddAnimal()
     {
       Console.WriteLine("What species of animal would you like to add to the tracker?");
@@ -27,17 +42,7 @@ namespace Wildlife
         Console.WriteLine("Species " + animal.GetAnimalType());
         Console.WriteLine("Age: " + animal.GetAnimalAge());
       }
-      Console.WriteLine("Would you like to return to the main menu?");
-      string searchAgain = Console.ReadLine();
-      string searchAgainLower = searchAgain.ToLower();
-      if (searchAgainLower == "y")
-      {
-        Main();
-      }
-      else
-      {
-        Console.WriteLine("OK, have a nice day!");
-      }
+      ReturnToMenu();
     }
 
     public static void UpdateAnimalAge()
@@ -55,17 +60,8 @@ namespace Wildlife
       }
       if (animalsMatchingUpdate.Count == 0)
       {
-        Console.WriteLine("There are no animals matching your search! Would you like to return to the main menu? (Y/N)");
-        string searchAgain = Console.ReadLine();
-        string searchAgainLower = searchAgain.ToLower();
-        if (searchAgainLower == "y")
-        {
-          Main();
-        }
-        else
-        {
-          Console.WriteLine("OK, have a nice day!");
-        }
+        Console.WriteLine("There are no animals matching your search.");
+        ReturnToMenu();
       }
       else if (animalsMatchingUpdate.Count == 1)
       {
@@ -73,17 +69,8 @@ namespace Wildlife
         string stringAge = Console.ReadLine();
         int updatedAge = int.Parse(stringAge);
         animalsMatchingUpdate[0].SetAnimalAge(updatedAge);
-        Console.WriteLine("We updated the age of " + animalsMatchingUpdate[0].GetAnimalName() + "! Would you like to return to the main menu? (Y/N");
-        string yesOrNo = Console.ReadLine();
-        string yesOrNoLower = yesOrNo.ToLower();
-        if (yesOrNoLower == "y")
-        {
-          Main();
-        }
-        else
-        {
-          Console.WriteLine("OK, have a nice day!");
-        }
+        Console.WriteLine("We updated the age of " + animalsMatchingUpdate[0].GetAnimalName() + "!");
+        ReturnToMenu();
       }
       else if (animalsMatchingUpdate.Count > 1)
       {
@@ -92,8 +79,8 @@ namespace Wildlife
         {
           Console.WriteLine("----------------------");
           Console.WriteLine("Animal" + index);
-          Console.WriteLine("Name " + animalsMatchingUpdate[index].GetAnimalName());
-          Console.WriteLine("Species " + animalsMatchingUpdate[index].GetAnimalType());
+          Console.WriteLine("Name: " + animalsMatchingUpdate[index].GetAnimalName());
+          Console.WriteLine("Species: " + animalsMatchingUpdate[index].GetAnimalType());
           Console.WriteLine("Age: " + animalsMatchingUpdate[index].GetAnimalAge());
         }
         string animalToUpdate = Console.ReadLine();
@@ -102,17 +89,8 @@ namespace Wildlife
         string stringAge = Console.ReadLine();
         int updatedAge = int.Parse(stringAge);
         animalsMatchingUpdate[animalNumber].SetAnimalAge(updatedAge);
-        Console.WriteLine("We updated the age of " + animalsMatchingUpdate[animalNumber].GetAnimalName() + "! Would you like to return to the main menu? (Y/N");
-        string yesOrNo = Console.ReadLine();
-        string yesOrNoLower = yesOrNo.ToLower();
-        if (yesOrNoLower == "y")
-        {
-          Main();
-        }
-        else
-        {
-          Console.WriteLine("OK, have a nice day!");
-        }
+        Console.WriteLine("We updated the age of " + animalsMatchingUpdate[animalNumber].GetAnimalName() + "!");
+        ReturnToMenu();
       }
     }
 
@@ -124,24 +102,15 @@ namespace Wildlife
       List<Animal> animalsMatchingSearch = new List<Animal>() {};
       foreach (Animal animal in Animal.myAnimals)
       {
-        if (animal.GetAnimalName() == animalResponseLower)
+        if (animal.GetAnimalName() == animalResponseLower || animal.GetAnimalType() == animalResponseLower)
         {
           animalsMatchingSearch.Add(animal);
         }
       }
       if (animalsMatchingSearch.Count == 0)
       {
-        Console.WriteLine("There are no animals matching your search! Would you like to return to the main menu? (Y/N)");
-        string searchAgain = Console.ReadLine();
-        string searchAgainLower = searchAgain.ToLower();
-        if (searchAgainLower == "y")
-        {
-          Main();
-        }
-        else
-        {
-          Console.WriteLine("OK, have a nice day!");
-        }
+        Console.WriteLine("There are no animals matching your search!");
+        ReturnToMenu();
       }
       else
       {
@@ -153,7 +122,7 @@ namespace Wildlife
           Console.WriteLine("Species: " + animal.GetAnimalType());
           Console.WriteLine("Age: " + animal.GetAnimalAge());
         }
-        Main();
+        ReturnToMenu();
       }
     }
 
@@ -181,22 +150,7 @@ namespace Wildlife
         }
         else
         {
-          Console.WriteLine("Would you like to return to the main menu or exit the application? (menu/exit)");
-          string quitOrMenu = Console.ReadLine();
-          string quitOrMenuLower = quitOrMenu.ToLower();
-          if (quitOrMenuLower == "exit")
-          {
-            Console.WriteLine("OK, have a nice day!");
-          }
-          else if (quitOrMenuLower == "menu")
-          {
-            Main();
-          }
-          else
-          {
-            Console.WriteLine("Please select exit or menu.");
-            // add logic
-          }
+          ReturnToMenu();
         }
       }
     }
