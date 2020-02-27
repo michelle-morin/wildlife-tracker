@@ -61,7 +61,6 @@ namespace Wildlife
       if (animalsMatchingUpdate.Count == 0)
       {
         Console.WriteLine("There are no animals matching your search.");
-        ReturnToMenu();
       }
       else if (animalsMatchingUpdate.Count == 1)
       {
@@ -70,7 +69,6 @@ namespace Wildlife
         int updatedAge = int.Parse(stringAge);
         animalsMatchingUpdate[0].SetAnimalAge(updatedAge);
         Console.WriteLine("We updated the age of " + animalsMatchingUpdate[0].GetAnimalName() + "!");
-        ReturnToMenu();
       }
       else if (animalsMatchingUpdate.Count > 1)
       {
@@ -92,8 +90,8 @@ namespace Wildlife
         int updatedAge = int.Parse(stringAge);
         animalsMatchingUpdate[animalNumber].SetAnimalAge(updatedAge);
         Console.WriteLine("We updated the age of " + animalsMatchingUpdate[animalNumber].GetAnimalName() + "!");
-        ReturnToMenu();
       }
+        ReturnToMenu();
     }
 
     public static void FindAnimal()
@@ -169,7 +167,8 @@ namespace Wildlife
 
     public static void SelectOption()
     {
-      Console.WriteLine("Welcome to the main menu of wildlife park tracker! Would you like to:");
+      Console.WriteLine("WELCOME TO THE WILDLIFE TRACKER");
+      Console.WriteLine("Would you like to:");
       Console.WriteLine("- track an animal in the park");
       Console.WriteLine("- add an animal to the wildlife tracker,");
       Console.WriteLine("- update information for a tracked animal, or");
