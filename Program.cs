@@ -167,7 +167,16 @@ namespace Wildlife
 
     public static void SelectOption()
     {
-      Console.WriteLine("WELCOME TO THE WILDLIFE TRACKER");
+      string zooTracker =@"
+ _______ _______ _______    _______ ______  _______ _______ _     _ _______ ______  
+(_______(_______(_______)  (_______(_____ \(_______(_______(_)   | (_______(_____ \ 
+   __    _     _ _     _       _    _____) )_______ _       _____| |_____   _____) )
+  / /   | |   | | |   | |     | |  |  __  /|  ___  | |     |  _   _|  ___) |  __  / 
+ / /____| |___| | |___| |     | |  | |  \ \| |   | | |_____| |  \ \| |_____| |  \ \ 
+(_______)\_____/ \_____/      |_|  |_|   |_|_|   |_|\______|_|   \_|_______|_|   |_|"; 
+                                                                                        
+      Console.Write(zooTracker);
+      Console.WriteLine();
       Console.WriteLine("Would you like to:");
       Console.WriteLine("- track an animal in the park");
       Console.WriteLine("- add an animal to the wildlife tracker,");
